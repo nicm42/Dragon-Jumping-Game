@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const background = document.querySelector('.background');
   const alert = document.getElementById('alert');
   const play = document.querySelector('.play');
+  const backgroundToggle = document.querySelector('.background-toggle');
+
   let isJumping = false;
   let isGameOver = false;
   let gravity = 0.9;
@@ -84,6 +86,19 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keyup', control);
     generateObstacles();    
   }
-
   play.addEventListener('click', playGame);
+
+  function toggleBackground() {
+    if(isBackgroundOn) {
+      backgroundToggle.innerHTML = "Turn on background";
+      background.style.visibility = "hidden";
+      isBackgroundOn = false;
+    } else {
+      backgroundToggle.innerHTML = "Turn off background";
+      background.style.visibility = "visible";
+      isBackgroundOn = true;
+    }
+  }
+  let isBackgroundOn = true;
+  backgroundToggle.addEventListener('click', toggleBackground);
 })
