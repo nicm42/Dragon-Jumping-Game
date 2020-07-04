@@ -1,9 +1,19 @@
+.background {
+  height: 200px;
+  width: 99vw; /* 99 rather than 100 to stop scrollbar appearing */
+  position: absolute;
+  bottom: 0;
+  background-image: url(t-rex-background.png);
+  background-repeat: repeat-x;
+}
+
 .dino {
   position: absolute;
   bottom: 0;
   width: 60px;
   height: 60px;
   background-image: url(t-rex.png);
+  background-repeat: no-repeat;
 }
 
 .obstacle {
@@ -12,4 +22,5 @@
   width: 60px;
   height: 60px;
   background-image: url(cacti.png);
+  background-repeat: no-repeat;
 }
