@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function generateObstacles() {
-    let randomTime = Math.random() * 40000;
+    let randomTime = Math.random() * 4000;
     let obstaclePosition = window.innerWidth + 100;
     const obstacle = document.createElement('div');
     obstacle.classList.add('obstacle');
