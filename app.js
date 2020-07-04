@@ -47,11 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let randomTime = Math.random() * 40000;
     let obstaclePosition = window.innerWidth + 100;
     const obstacle = document.createElement('div');
+    obstacle.classList.add('obstacle');
     if (!isGameOver) {
-      obstacle.classList.add('obstacle');
+      obstacles.appendChild(obstacle);
+      obstacle.style.left = obstaclePosition + 'px';
     }
-    obstacles.appendChild(obstacle);
-    obstacle.style.left = obstaclePosition + 'px';
 
     let timerId = setInterval(function() {
       if (obstaclePosition > 0 && obstaclePosition < 60 && position < 60) {
