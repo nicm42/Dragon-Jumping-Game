@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (obstaclePosition > 0 && obstaclePosition < 60 && position < 60) {
         clearInterval(timerId);
         alert.innerHTML = 'Game Over';
+        play.style.visibility = 'visible';
         isGameOver = true;
         //remove all children
         while (obstacles.firstChild) {
@@ -77,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function playGame(){
+    play.style.visibility = 'hidden';
     isGameOver = false;
     alert.innerHTML = '';
     background.classList.add('animate');
