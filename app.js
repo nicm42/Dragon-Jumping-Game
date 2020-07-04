@@ -10,6 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let isGameOver = false;
   let gravity = 0.9;
 
+  let highScore = localStorage.getItem('highScore');
+  if (highScore) {
+    document.querySelector('.high-score-number').innerHTML = highScore;
+  }
+
   function control(e) {
     e.preventDefault();
     if (e.keyCode === 32) {
@@ -64,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
         isGameOver = true;
         //count how many obstacles have position < 0
         //that's the score of how many the dinosaur jumped over
-        //const obstaclesChildren = Array.from(obstacles.children);
         const obstaclesJumped = Array.from(obstacles.children).filter(element => {
           const leftPosition = parseInt(element.style.left.replace('pxg',''));
           if (leftPosition < 0) {
@@ -72,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         })
         document.querySelector('.score-number').innerHTML = obstaclesJumped.length;
+        updateHighScore(obstaclesJumped.length);
         //remove all obstacles
         while (obstacles.firstChild) {
           obstacles.removeChild(obstacles.lastChild);
@@ -86,6 +91,15 @@ document.addEventListener('DOMContentLoaded', () => {
     },30)
     if (!isGameOver) {
       setTimeout(generateObstacles, randomTime);
+    }
+  }
+
+  function updateHighScore(score) {
+    let currentHighScore = localStorage.getItem('highScore');
+    console.log(currentHighScore);
+    if (!currentHighScore || score > currentHighScore) {
+      localStorage.setItem('highScore',score);
+      document.querySelector('.high-score-number').innerHTML = score;
     }
   }
 
