@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       obstaclePosition -= 10;
       obstacle.style.left = obstaclePosition + 'px';      
-    },20)
+    },30)
     if (!isGameOver) {
       setTimeout(generateObstacles, randomTime);
     }
