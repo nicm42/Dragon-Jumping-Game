@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
   const dino = document.querySelector('.dino');
-  const grid = document.querySelector('.grid');
+  const obstacles = document.querySelector('.obstacles');
+  const background = document.querySelector('.background');
   const alert = document.getElementById('alert');
+  const play = document.querySelector('.play');
   let isJumping = false;
   let isGameOver = false;
   let gravity = 0.9;
@@ -14,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   }
-  document.addEventListener('keyup', control);
 
   let position = 0;
   function jump() {
@@ -43,13 +44,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function generateObstacles() {
-    let randomTime = Math.random() * 4000;
+    let randomTime = Math.random() * 40000;
     let obstaclePosition = 1000;
     const obstacle = document.createElement('div');
     if (!isGameOver) {
       obstacle.classList.add('obstacle');
     }
-    grid.appendChild(obstacle);
+    obstacles.appendChild(obstacle);
     obstacle.style.left = obstaclePosition + 'px';
 
     let timerId = setInterval(function() {
@@ -58,18 +59,30 @@ document.addEventListener('DOMContentLoaded', () => {
         alert.innerHTML = 'Game Over';
         isGameOver = true;
         //remove all children
-        while (grid.firstChild) {
-          grid.removeChild(grid.lastChild);
+        while (obstacles.firstChild) {
+          obstacles.removeChild(obstacles.lastChild);
         }
+        //hide all the obstacles
+        background.classList.remove('animate');
       }
 
-      obstaclePosition -= 10;
-      obstacle.style.left = obstaclePosition + 'px';      
+      if(!isGameOver){
+        obstaclePosition -= 10;
+        obstacle.style.left = obstaclePosition + 'px';      
+      }
     },30)
     if (!isGameOver) {
       setTimeout(generateObstacles, randomTime);
     }
   }
-  generateObstacles();
 
+  function playGame(){
+    isGameOver = false;
+    alert.innerHTML = '';
+    background.classList.add('animate');
+    document.addEventListener('keyup', control);
+    generateObstacles();    
+  }
+
+  play.addEventListener('click', playGame);
 })

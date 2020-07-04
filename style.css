@@ -23,6 +23,9 @@
   bottom: 0;
   background-image: url(t-rex-background.png);
   background-repeat: repeat-x;
+}
+
+.background.animate {
   animation: scrollBackground 250s infinite linear;
 }
 
