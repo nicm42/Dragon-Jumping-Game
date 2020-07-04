@@ -3,7 +3,7 @@
   bottom: 0;
   width: 60px;
   height: 60px;
-  background-color: red;
+  background-image: url(t-rex.png);
 }
 
 .obstacle {
@@ -11,5 +11,5 @@
   bottom: 0;
   width: 60px;
   height: 60px;
-  background-color: orange;
+  background-image: url(cacti.png);
 }
