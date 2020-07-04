@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function generateObstacles() {
     let randomTime = Math.random() * 40000;
-    let obstaclePosition = 1000;
+    let obstaclePosition = window.innerWidth + 100;
     const obstacle = document.createElement('div');
     if (!isGameOver) {
       obstacle.classList.add('obstacle');
@@ -59,11 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
         alert.innerHTML = 'Game Over';
         play.style.visibility = 'visible';
         isGameOver = true;
-        //remove all children
+        //remove all obstacles
         while (obstacles.firstChild) {
           obstacles.removeChild(obstacles.lastChild);
         }
-        //hide all the obstacles
         background.classList.remove('animate');
       }
 
