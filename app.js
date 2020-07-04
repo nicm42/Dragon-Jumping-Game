@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let gravity = 0.9;
 
   function control(e) {
+    e.preventDefault();
     if (e.keyCode === 32) {
       if (!isJumping) {
         isJumping = true;
@@ -93,12 +94,14 @@ document.addEventListener('DOMContentLoaded', () => {
     isGameOver = false;
     alert.innerHTML = '';
     background.classList.add('animate');
+    window.focus();
     document.addEventListener('keyup', control);
     generateObstacles();    
   }
   play.addEventListener('click', playGame);
 
   function toggleBackground() {
+    window.focus(); //in case it's pressed while playing
     if(isBackgroundOn) {
       backgroundToggle.innerHTML = "Turn on background";
       background.style.visibility = "hidden";
