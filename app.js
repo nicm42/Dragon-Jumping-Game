@@ -61,6 +61,16 @@ document.addEventListener('DOMContentLoaded', () => {
         alert.innerHTML = 'Game Over';
         play.style.visibility = 'visible';
         isGameOver = true;
+        //count how many obstacles have position < 0
+        //that's the score of how many the dinosaur jumped over
+        //const obstaclesChildren = Array.from(obstacles.children);
+        const obstaclesJumped = Array.from(obstacles.children).filter(element => {
+          const leftPosition = parseInt(element.style.left.replace('pxg',''));
+          if (leftPosition < 0) {
+            return element;
+          }
+        })
+        document.querySelector('.score-number').innerHTML = obstaclesJumped.length;
         //remove all obstacles
         while (obstacles.firstChild) {
           obstacles.removeChild(obstacles.lastChild);
