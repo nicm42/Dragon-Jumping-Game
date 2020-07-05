@@ -21,11 +21,11 @@ body {
 }
 
 .background {
-  height: 200px;
+  height: 280px;
   width: 99vw; /* 99 rather than 100 to stop scrollbar appearing */
   position: absolute;
   bottom: 0;
-  background-image: url(t-rex-background.png);
+  background-image: url(t-rex-background-tall.png);
   background-repeat: repeat-x;
 }
 
