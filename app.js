@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let isJumping = false;
   let isGameOver = false;
+  let isBackgroundOn = true;
   let gravity = 0.9;
 
   let highScore = localStorage.getItem('highScore');
@@ -129,12 +130,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function playGameAgain() {
     sessionStorage.setItem("reloading", "true");
+    sessionStorage.setItem("background", isBackgroundOn);
     location.reload();
   }
 
   const reloading = sessionStorage.getItem("reloading");
   if (reloading) {
     sessionStorage.removeItem("reloading");
+    toggleBackground();
     playGame();
   }
 
@@ -150,6 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
       isBackgroundOn = true;
     }
   }
-  let isBackgroundOn = true;
+
   backgroundToggle.addEventListener('click', toggleBackground);
 })
