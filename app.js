@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let isGameOver = false;
   let isBackgroundOn = true;
   let gravity = 0.9;
+  let position = 0;
 
   let highScore = localStorage.getItem('highScore');
   if (highScore) {
@@ -27,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  let position = 0;
   function jump() {
     count = 0;
     let timerId = setInterval(function () {
@@ -120,37 +120,51 @@ document.addEventListener('DOMContentLoaded', () => {
     generateObstacles();
     play.removeEventListener('click', playGame);
   }
+  
   play.addEventListener('click', playGame);
 
-  /* When we click play, if we've played before, the removed children are re-added
-     So to stop this we'll force the browser to reload
-     And if it's reloading (not loading for the first time)
-     immediately run the game without having to press play
+  /* 
+    When we click play, if we've played before, the removed children are re-added
+    So to stop this we'll force the browser to reload
+    And if it's reloading (not loading for the first time)
+    immediately run the game without having to press play
   */
 
   function playGameAgain() {
-    sessionStorage.setItem("reloading", "true");
-    sessionStorage.setItem("background", isBackgroundOn);
+    sessionStorage.setItem('reloading', 'true');
+    //using JSON.stringify here because sessionStorage only stores strings, not booleans
+    sessionStorage.setItem('background', JSON.stringify(isBackgroundOn));
     location.reload();
   }
 
-  const reloading = sessionStorage.getItem("reloading");
+  const reloading = sessionStorage.getItem('reloading');
+
   if (reloading) {
-    sessionStorage.removeItem("reloading");
-    toggleBackground();
+    sessionStorage.removeItem('reloading');
+    //using JSON.stringify here because sessionStorage only stores strings and we need this is a boolean
+    isBackgroundOn = JSON.parse(sessionStorage.getItem('background'));
+    setBackground();
     playGame();
   }
 
   function toggleBackground() {
     window.focus(); //in case it's pressed while playing
-    if(isBackgroundOn) {
-      backgroundToggle.innerHTML = "Turn on background";
-      background.style.visibility = "hidden";
+    if (isBackgroundOn) {
       isBackgroundOn = false;
+      setBackground();
     } else {
+      isBackgroundOn = true;
+      setBackground();
+    }
+  }
+
+  function setBackground() {
+    if (isBackgroundOn) {
       backgroundToggle.innerHTML = "Turn off background";
       background.style.visibility = "visible";
-      isBackgroundOn = true;
+    } else {
+      backgroundToggle.innerHTML = "Turn on background";
+      background.style.visibility = "hidden";
     }
   }
 

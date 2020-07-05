@@ -30,7 +30,8 @@ body {
 }
 
 .background.animate {
-  animation: scrollBackground 250s infinite linear;
+  /* animation: scrollBackground 250s infinite linear; */
+  animation: scrollBackground 400s infinite linear;
 }
 
 @keyframes scrollBackground {
