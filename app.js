@@ -65,26 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let timerId = setInterval(function() {
       if (obstaclePosition > 0 && obstaclePosition < 60 && position < 60) {
         clearInterval(timerId);
-        alert.innerHTML = 'Game Over';
-        playAgain.style.display = 'block';
-        isGameOver = true;
-        //count how many obstacles have position < 0
-        //that's the score of how many the dinosaur jumped over
-        const obstaclesJumped = Array.from(obstacles.children).filter(element => {
-          const leftPosition = parseInt(element.style.left.replace('pxg',''));
-          if (leftPosition < 0) {
-            return element;
-          }
-        })
-        document.querySelector('.score-number').innerHTML = obstaclesJumped.length;
-        updateHighScore(obstaclesJumped.length);
-        //remove all obstacles
-        while (obstacles.firstChild) {
-          obstacles.removeChild(obstacles.lastChild);
-        }
-        background.classList.remove('animate');
-        document.removeEventListener('keyup', control);
-        playAgain.addEventListener('click', playGameAgain);
+        gameOver();
       }
 
       if(!isGameOver){
@@ -95,6 +76,29 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!isGameOver) {
       setTimeout(generateObstacles, randomTime);
     }
+  }
+
+  function gameOver() {
+    alert.innerHTML = 'Game Over';
+    playAgain.style.display = 'block';
+    isGameOver = true;
+    //count how many obstacles have position < 0
+    //that's the score of how many the dinosaur jumped over
+    const obstaclesJumped = Array.from(obstacles.children).filter(element => {
+      const leftPosition = parseInt(element.style.left.replace('pxg', ''));
+      if (leftPosition < 0) {
+        return element;
+      }
+    })
+    document.querySelector('.score-number').innerHTML = obstaclesJumped.length;
+    updateHighScore(obstaclesJumped.length);
+    //remove all obstacles
+    while (obstacles.firstChild) {
+      obstacles.removeChild(obstacles.lastChild);
+    }
+    background.classList.remove('animate');
+    document.removeEventListener('keyup', control);
+    playAgain.addEventListener('click', playGameAgain);
   }
 
   function updateHighScore(score) {
