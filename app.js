@@ -72,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if(!isGameOver){
         obstaclePosition -= 10;
         obstacle.style.left = obstaclePosition + 'px';      
+        calculateScore();
       }
     },30)
     if (!isGameOver) {
@@ -83,6 +84,21 @@ document.addEventListener('DOMContentLoaded', () => {
     alert.innerHTML = 'Game Over';
     playAgain.style.display = 'block';
     isGameOver = true;
+    //Just in case the position of everything and the timer means that it hasn't updated the score
+    //we'll do it again
+    //(not sure it is possible, but simpler to do it again than try and test whatever exact circumstances might lead to the score not being correct)
+    calculateScore();
+    updateHighScore(obstaclesJumped.length);
+    //remove all obstacles
+    while (obstacles.firstChild) {
+      obstacles.removeChild(obstacles.lastChild);
+    }
+    background.classList.remove('animate');
+    document.removeEventListener('keyup', control);
+    playAgain.addEventListener('click', playGameAgain);
+  }
+
+  function calculateScore() {
     //count how many obstacles have position < 0
     //that's the score of how many the dinosaur jumped over
     const obstaclesJumped = Array.from(obstacles.children).filter(element => {
@@ -92,14 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     })
     document.querySelector('.score-number').innerHTML = obstaclesJumped.length;
-    updateHighScore(obstaclesJumped.length);
-    //remove all obstacles
-    while (obstacles.firstChild) {
-      obstacles.removeChild(obstacles.lastChild);
-    }
-    background.classList.remove('animate');
-    document.removeEventListener('keyup', control);
-    playAgain.addEventListener('click', playGameAgain);
   }
 
   function updateHighScore(score) {
