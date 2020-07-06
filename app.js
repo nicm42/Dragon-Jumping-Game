@@ -110,11 +110,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function setBackgroundSpeed() {
+    let constant = 15;
+    if(window.innerWidth <= 550) {
+      constant = 7;
+    }
+    const animationTime = window.innerWidth * 0.03 - constant;
+    background.style.animationDuration = animationTime + 's';
+  }
+
   function playGame(){
     play.style.display = 'none';
     isGameOver = false;
     alert.innerHTML = '';
     background.classList.add('animate');
+    setBackgroundSpeed();
+    window.addEventListener('resize', setBackgroundSpeed);
     window.focus();
     document.addEventListener('keyup', control);
     generateObstacles();

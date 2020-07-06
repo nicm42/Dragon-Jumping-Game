@@ -27,24 +27,18 @@ body {
   bottom: 0;
   background-image: url(t-rex-background-tall.png);
   background-repeat: repeat-x;
-  /* background-size: 300px; */ /* TODO for screen sizes under 525px but it's then not at the bottom - need new image instead of changing size? */
+}
+
+@media (max-width: 550px) {
+  .background {
+    background-image: url(t-rex-background-small.png);
+  }
 }
 
 .background.animate {
-  /* animation: scrollBackground 0.75s infinite linear */ /* 550px window with 525px image */
-  /* animation: scrollBackground 2.5s infinite linear */ /* 600px window with 525px image */
-  /* animation: scrollBackground 4s infinite linear */ /* 650px window with 525px image */
-  /* animation: scrollBackground 5.25s infinite linear */ /* 700px window with 525px image */
-  /* animation: scrollBackground 7.5s infinite linear; */ /* 750px window with 525px image */
-  /* animation: scrollBackground 15s infinite linear; */ /* 1000px window with 525px image */
-  /* animation: scrollBackground 22.5s infinite linear; */ /* 1250px window with 525px image */
-  /* animation: scrollBackground 30s infinite linear; */ /* 1500px window with 525px image */
-  /* animation: scrollBackground 45s infinite linear; */ /* 2000px window with 525px image */
-
-  /* animation: scrollBackground 7s infinite linear; */ /* 500px window with 300px image */
-  /* animation: scrollBackground 0.5s infinite linear; */ /* 320px window with 300px image */
-  /* animation: scrollBackground 3.5s infinite linear; */ /* 400px window with 300px image */
-  /* animation: scrollBackground 5.25s infinite linear; */ /* 450px window with 300px image */
+  animation-name: scrollBackground;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 
 @keyframes scrollBackground {
