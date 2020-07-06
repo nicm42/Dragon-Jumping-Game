@@ -84,11 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
     alert.innerHTML = 'Game Over';
     playAgain.style.display = 'block';
     isGameOver = true;
-    //Just in case the position of everything and the timer means that it hasn't updated the score
-    //we'll do it again
-    //(not sure it is possible, but simpler to do it again than try and test whatever exact circumstances might lead to the score not being correct)
+    //Check the score and update the high score, if necessary
     calculateScore();
-    updateHighScore(obstaclesJumped.length);
     //remove all obstacles
     while (obstacles.firstChild) {
       obstacles.removeChild(obstacles.lastChild);
@@ -108,6 +105,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     })
     document.querySelector('.score-number').innerHTML = obstaclesJumped.length;
+    if (isGameOver) {
+      updateHighScore(obstaclesJumped.length);
+    }
   }
 
   function updateHighScore(score) {
@@ -115,12 +115,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!currentHighScore || score > currentHighScore) {
       localStorage.setItem('highScore',score);
       document.querySelector('.high-score-number').innerHTML = score;
+      if (score > currentHighScore) {
+        alert.innerHTML += ". New high score!";
+      }
     }
   }
 
   function setBackgroundSpeed() {
     let constant = 15;
-    if(window.innerWidth <= 550) {
+    if (window.innerWidth <= 550) {
       constant = 7;
     }
     const animationTime = window.innerWidth * 0.03 - constant;
