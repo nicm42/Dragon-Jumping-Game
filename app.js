@@ -10,8 +10,31 @@ document.addEventListener('DOMContentLoaded', () => {
   let isJumping = false;
   let isGameOver = false;
   let isBackgroundOn = true;
-  let gravity = 0.9;
+  //let gravity = 0.9;
   let position = 0;
+
+  //Set variables based on gravity
+  const earth = false;
+  const moon = true
+  let gravityUp;
+  let gravityDown;
+  let jumpCount;
+  let positionDown;
+  let positionUp;
+  if (earth) {
+    gravityUp = 0.9;
+    gravityDown = 0.9;
+    jumpCount = 15;
+    positionDown = 30;
+    positionUp = 5;
+  }
+  if (moon) {
+    gravityUp = 1 / 1.05;
+    gravityDown = 0.9;
+    jumpCount = 50;
+    positionDown = 25;
+    positionUp = 1;
+  }
 
   let highScore = localStorage.getItem('highScore');
   if (highScore) {
@@ -31,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function jump() {
     count = 0;
     let timerId = setInterval(function () {
-      if (count === 15) {
+      if (count === jumpCount) {
         clearInterval(timerId);
         let downTimerId = setInterval(function () {
           if (count === 0) {
@@ -39,16 +62,16 @@ document.addEventListener('DOMContentLoaded', () => {
             isJumping = false;
           }
           //move down
-          position -= 5;
-          position *= gravity;
-          count --;
+          position -= positionUp;
+          position *= gravityUp;
+          count--;
           dino.style.bottom = position + 'px';
         },20)
       }
       //move up
       count++;
-      position += 30;
-      position *= gravity;
+      position += positionDown;
+      position *= gravityDown;
       dino.style.bottom = position + 'px';
     },20)
   }
