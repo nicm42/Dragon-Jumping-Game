@@ -6,36 +6,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const play = document.querySelector('.play');
   const playAgain = document.querySelector('.play-again');
   const backgroundToggle = document.querySelector('.background-toggle');
+  const planet = Array.from(document.getElementsByClassName('planet'));
+  const earth = document.getElementById('earth');
+  const moon = document.getElementById('moon');
+
 
   let isJumping = false;
   let isGameOver = false;
   let isBackgroundOn = true;
-  //let gravity = 0.9;
   let position = 0;
 
-  //Set variables based on gravity
-  const earth = false;
-  const moon = true
+  //Planet-based variables - set to earth to start with
   let gravityUp;
   let gravityDown;
   let jumpCount;
   let positionDown;
   let positionUp;
-  if (earth) {
-    gravityUp = 0.9;
-    gravityDown = 0.9;
-    jumpCount = 15;
-    positionDown = 30;
-    positionUp = 5;
-  }
-  if (moon) {
-    gravityUp = 1 / 1.05;
-    gravityDown = 0.9;
-    jumpCount = 50;
-    positionDown = 25;
-    positionUp = 1;
-  }
-
+  
   let highScore = localStorage.getItem('highScore');
   if (highScore) {
     document.querySelector('.high-score-number').innerHTML = highScore;
@@ -188,8 +175,18 @@ document.addEventListener('DOMContentLoaded', () => {
     sessionStorage.removeItem('reloading');
     //using JSON.stringify here because sessionStorage only stores strings and we need this is a boolean
     isBackgroundOn = JSON.parse(sessionStorage.getItem('background'));
+
+    if(sessionStorage.getItem('planet') === 'earth') {
+      setUpEarth();
+    };
+    if (sessionStorage.getItem('planet') === 'moon') {
+      setUpMoon();
+    };
     setBackground();
     playGame();
+  } else {
+    //Set Earth to start with
+    setUpEarth();
   }
 
   function toggleBackground() {
@@ -214,4 +211,38 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   backgroundToggle.addEventListener('click', toggleBackground);
+
+  function setUpEarth() {
+    gravityUp = 0.9;
+    gravityDown = 0.9;
+    jumpCount = 15;
+    positionDown = 30;
+    positionUp = 5;
+    earth.disabled = true;
+    moon.disabled = false;
+    sessionStorage.setItem('planet', 'earth');
+  }
+
+  function setUpMoon() {
+    gravityUp = 1 / 1.05;
+    gravityDown = 0.9;
+    jumpCount = 50;
+    positionDown = 25;
+    positionUp = 1;
+    moon.disabled = true;
+    earth.disabled = false;
+    sessionStorage.setItem('planet', 'moon');
+  }
+
+  planet.forEach(function (element) {
+    element.addEventListener('click', function () {
+      if (this.id === 'earth') {
+        setUpEarth();
+      }
+      if (this.id === 'moon') {
+        setUpMoon();
+      }
+    })
+  });
+
 })
