@@ -11,6 +11,13 @@ body {
   background-repeat: no-repeat;
 }
 
+.dead {
+  transform: rotate(-120deg);
+  bottom: 10px;
+  transition: transform 500ms linear;
+
+}
+
 .obstacle {
   position: absolute;
   bottom: 0;
@@ -18,6 +25,11 @@ body {
   height: 60px;
   background-image: url(cacti.png);
   background-repeat: no-repeat;
+}
+
+.fadeOut {
+  opacity: 0;
+  transition: opacity 500ms linear;
 }
 
 .background {

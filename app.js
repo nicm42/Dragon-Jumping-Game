@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let positionUp;
 
   function control(e) {
-    console.log(e.type)
     e.preventDefault();
     if (e.keyCode === 32 || e.type === 'click') {
       if (!isJumping) {
@@ -99,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.removeEventListener('keyup', control);
     background.removeEventListener('click', control);
     playAgain.addEventListener('click', playGameAgain);
+    dino.classList.add('dead');
   }
 
   function calculateScore() {
