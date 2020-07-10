@@ -23,8 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let positionUp;
 
   function control(e) {
+    console.log(e.type)
     e.preventDefault();
-    if (e.keyCode === 32) {
+    if (e.keyCode === 32 || e.type === 'click') {
       if (!isJumping) {
         isJumping = true;
         jump();
@@ -96,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     background.classList.remove('animate');
     document.removeEventListener('keyup', control);
+    background.removeEventListener('click', control);
     playAgain.addEventListener('click', playGameAgain);
   }
 
@@ -167,6 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', setBackgroundSpeed);
     window.focus();
     document.addEventListener('keyup', control);
+    background.addEventListener('click', control);
     generateObstacles();
     play.removeEventListener('click', playGame);
   }
