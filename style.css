@@ -21,12 +21,21 @@ body {
 }
 
 .background {
-  height: 280px;
-  width: 100%; /* 99 rather than 100 to stop scrollbar appearing */
   position: absolute;
   bottom: 0;
+  height: 280px;
+  width: 100%;
   background-image: url(t-rex-background-tall.png);
   background-repeat: repeat-x;
+}
+
+.background-border {
+  position: absolute;
+  bottom: 0;
+  left: -10px;
+  height: 280px;
+  width: 110%;
+  border-top: 1px solid grey;
 }
 
 @media (max-width: 550px) {
