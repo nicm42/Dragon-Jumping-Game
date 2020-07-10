@@ -226,10 +226,10 @@ document.addEventListener('DOMContentLoaded', () => {
   function setBackground() {
     if (isBackgroundOn) {
       backgroundToggle.innerHTML = "Turn off background";
-      background.style.visibility = "visible";
+      background.style.opacity = 1;
     } else {
       backgroundToggle.innerHTML = "Turn on background";
-      background.style.visibility = "hidden";
+      background.style.opacity = 0;
     }
   }
 
