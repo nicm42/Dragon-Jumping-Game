@@ -22,11 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let jumpCount;
   let positionDown;
   let positionUp;
-  
-  let highScore = localStorage.getItem('highScore');
-  if (highScore) {
-    document.querySelector('.high-score-number').innerHTML = highScore;
-  }
 
   function control(e) {
     e.preventDefault();
@@ -53,14 +48,14 @@ document.addEventListener('DOMContentLoaded', () => {
           position *= gravityUp;
           count--;
           dino.style.bottom = position + 'px';
-        },20)
+        }, 20)
       }
       //move up
       count++;
       position += positionDown;
       position *= gravityDown;
       dino.style.bottom = position + 'px';
-    },20)
+    }, 20)
   }
 
   function generateObstacles() {
@@ -73,18 +68,18 @@ document.addEventListener('DOMContentLoaded', () => {
       obstacle.style.left = obstaclePosition + 'px';
     }
 
-    let timerId = setInterval(function() {
+    let timerId = setInterval(function () {
       if (obstaclePosition > 0 && obstaclePosition < 60 && position < 60) {
         clearInterval(timerId);
         gameOver();
       }
 
-      if(!isGameOver){
+      if (!isGameOver) {
         obstaclePosition -= 10;
-        obstacle.style.left = obstaclePosition + 'px';      
+        obstacle.style.left = obstaclePosition + 'px';
         calculateScore();
       }
-    },30)
+    }, 30)
     if (!isGameOver) {
       setTimeout(generateObstacles, randomTime);
     }
@@ -121,15 +116,54 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function updateHighScore(score) {
-    let currentHighScore = localStorage.getItem('highScore');
+    let currentHighScore = getHighScore();
     if (!currentHighScore || score > currentHighScore) {
-      localStorage.setItem('highScore',score);
-      document.querySelector('.high-score-number').innerHTML = score;
+      const planet = sessionStorage.getItem('planet');
+      setHighScore(`highScore-${planet}`, score);
+      /* if (sessionStorage.getItem('planet') === 'earth') {
+        localStorage.setItem('highScore-earth', score);
+      }
+      if (sessionStorage.getItem('planet') === 'moon') {
+        localStorage.setItem('highScore-moon', score);
+      } */
+      //document.querySelector('.high-score-number').innerHTML = score;
+      writeHighScore(score);
       if (score > currentHighScore) {
         alert.innerHTML += ". New high score!";
       }
     }
   }
+
+  function getHighScore() {
+    let highScore;
+    let currentPlanet = sessionStorage.getItem('planet');
+    if (!currentPlanet) {
+      currentPlanet = 'earth';
+    }
+    if (currentPlanet === 'earth') {
+      highScore = localStorage.getItem('highScore-earth');
+    }
+    if (currentPlanet === 'moon') {
+      highScore = localStorage.getItem('highScore-moon');
+    }
+    return highScore;
+  }
+
+  function setHighScore(planet, score) {
+    console.log(planet, score);
+    localStorage.setItem(planet, score);
+    console.log(localStorage.getItem('highScore-earth'));
+    console.log(localStorage.getItem('highScore-moon'));
+  }
+
+  function writeHighScore(highScore) {
+    if (highScore) {
+      document.querySelector('.high-score-number').innerHTML = highScore;
+    }
+  }
+
+  const highScore = getHighScore();
+  writeHighScore(highScore);
 
   function setBackgroundSpeed() {
     let constant = 15;
@@ -140,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
     background.style.animationDuration = animationTime + 's';
   }
 
-  function playGame(){
+  function playGame() {
     play.style.display = 'none';
     isGameOver = false;
     alert.innerHTML = '';
@@ -152,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
     generateObstacles();
     play.removeEventListener('click', playGame);
   }
-  
+
   play.addEventListener('click', playGame);
 
   /* 
@@ -176,13 +210,15 @@ document.addEventListener('DOMContentLoaded', () => {
     //using JSON.stringify here because sessionStorage only stores strings and we need this is a boolean
     isBackgroundOn = JSON.parse(sessionStorage.getItem('background'));
 
-    if(sessionStorage.getItem('planet') === 'earth') {
+    if (sessionStorage.getItem('planet') === 'earth') {
       setUpEarth();
     };
     if (sessionStorage.getItem('planet') === 'moon') {
       setUpMoon();
     };
     setBackground();
+    const highScore = getHighScore();
+    writeHighScore(highScore);
     playGame();
   } else {
     //Set Earth to start with
@@ -242,6 +278,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (this.id === 'moon') {
         setUpMoon();
       }
+      const highScore = getHighScore();
+      writeHighScore(highScore);
     })
   });
 
