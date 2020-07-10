@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const earth = document.getElementById('earth');
   const moon = document.getElementById('moon');
 
-
   let isJumping = false;
   let isGameOver = false;
   let isBackgroundOn = true;
@@ -120,13 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!currentHighScore || score > currentHighScore) {
       const planet = sessionStorage.getItem('planet');
       setHighScore(`highScore-${planet}`, score);
-      /* if (sessionStorage.getItem('planet') === 'earth') {
-        localStorage.setItem('highScore-earth', score);
-      }
-      if (sessionStorage.getItem('planet') === 'moon') {
-        localStorage.setItem('highScore-moon', score);
-      } */
-      //document.querySelector('.high-score-number').innerHTML = score;
       writeHighScore(score);
       if (score > currentHighScore) {
         alert.innerHTML += ". New high score!";
@@ -135,25 +127,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function getHighScore() {
-    let highScore;
+    //let highScore;
     let currentPlanet = sessionStorage.getItem('planet');
     if (!currentPlanet) {
       currentPlanet = 'earth';
     }
-    if (currentPlanet === 'earth') {
-      highScore = localStorage.getItem('highScore-earth');
-    }
-    if (currentPlanet === 'moon') {
-      highScore = localStorage.getItem('highScore-moon');
-    }
+    const highScore = localStorage.getItem(`highScore-${currentPlanet}`);
     return highScore;
   }
 
   function setHighScore(planet, score) {
-    console.log(planet, score);
     localStorage.setItem(planet, score);
-    console.log(localStorage.getItem('highScore-earth'));
-    console.log(localStorage.getItem('highScore-moon'));
   }
 
   function writeHighScore(highScore) {
