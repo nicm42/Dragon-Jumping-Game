@@ -90,10 +90,16 @@ document.addEventListener('DOMContentLoaded', () => {
     isGameOver = true;
     //Check the score and update the high score, if necessary
     calculateScore();
-    //remove all obstacles
-    while (obstacles.firstChild) {
-      obstacles.removeChild(obstacles.lastChild);
+    //fade out all obstacles
+    for (obstacle of obstacles.childNodes) {
+      obstacle.classList.add('fadeOut');
     }
+    setTimeout(() => {
+      //remove all obstacles
+      while (obstacles.firstChild) {
+        obstacles.removeChild(obstacles.lastChild);
+      }      
+    }, 500);
     background.classList.remove('animate');
     document.removeEventListener('keyup', control);
     background.removeEventListener('click', control);
