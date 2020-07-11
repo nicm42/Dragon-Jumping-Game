@@ -126,9 +126,26 @@ body {
 
 button {
   cursor: pointer;
+  padding: 0;
 }
 
 .planet {
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: none;
+  background-color: transparent;
+}
+
+/* Fade out the button that isn't disabled because the disabled one is the current setup */
+.planet:not(:disabled) {
+  opacity: 0.33;
+}
+
+#earth {
+    background-image: url(https://img.icons8.com/office/40/000000/earth-planet.png);
+}
+
+#moon {
+  background-image: url(https://img.icons8.com/cotton/40/000000/moon-satellite.png);
 }
