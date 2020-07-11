@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  backgroundToggle.addEventListener('click', toggleBackground);
+  backgroundToggle.addEventListener('change', toggleBackground);
 
   function setUpEarth() {
     gravityUp = 0.9;
