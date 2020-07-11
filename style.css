@@ -173,51 +173,6 @@ button {
   opacity: 0;
 }
 
-/* .switch {
-  position: relative;
-  display: inline-block;
-  width: 100px;
-  height: 40px;
-  background-color: #eee;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: background-color 300ms ease-in-out;
-}
-
-.switch::before {
-  content: '';
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: white;
-  transition: left 300ms ease-in-out;
-}
-
-.switch::after {
-  content: 'OFF';
-  position: absolute;
-  display: block;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 0.8rem;
-}
-
-.background-toggle:checked + .switch {
-  background-color: #bae0bd;
-}
-
-.background-toggle:checked + .switch::before {
-  left: 65px;
-}
-
-.background-toggle:checked+.switch::after {
-  content: 'ON';
-} */
-
 .planet {
   width: 40px;
   height: 40px;
