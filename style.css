@@ -123,3 +123,12 @@ body {
 .background-toggle:checked+.switch::after {
   content: 'ON';
 }
+
+button {
+  cursor: pointer;
+}
+
+.planet {
+  border-radius: 50%;
+  border: none;
+}
