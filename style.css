@@ -102,7 +102,6 @@ button {
   position: relative;
   display: inline-flex;
   align-items: center;
-  margin: 5px 0;
   cursor: pointer;
 }
 
@@ -110,9 +109,8 @@ button {
 .switch-toggle::after {
   content: '';
   display: block;
-  margin: 0 3px;
   background: #eee;
-  transition: all 300ms ease-in-out;
+  transition: transform 300ms ease-in-out;
 }
 
 .switch-toggle::before {
@@ -143,6 +141,36 @@ button {
 .background-toggle:hover+.switch-toggle, 
 .background-toggle:focus + .switch-toggle {
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+.text-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.text-toggle::before {
+  content: 'ON';
+  position: absolute;
+  transform: translateX(-3.5em);
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+.text-toggle::after {
+  content: 'OFF';
+  position: absolute;
+  transform: translateX(calc(-100% - 0.5em));
+  opacity: 1;
+  transition: opacity 300ms ease-in-out;
+}
+
+.background-toggle:checked ~ .text-toggle::before {
+  opacity: 1;  
+}
+
+.background-toggle:checked ~ .text-toggle::after {
+  opacity: 0;
 }
 
 /* .switch {
