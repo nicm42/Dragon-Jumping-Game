@@ -80,8 +80,9 @@ button {
 
 .play-button {
   background-color: #c2e8ff;
-  padding: 10px;
+  padding: 0.5em 0.8em;
   border-radius: 5px;
+  font-size: 1rem;
 }
 
 .play-button:hover,
@@ -153,9 +154,10 @@ button {
 .text-toggle::before {
   content: 'ON';
   position: absolute;
-  transform: translateX(-3.5em);
+  transform: translateX(-4.25em);
   opacity: 0;
   transition: opacity 300ms ease-in-out;
+  font-size: 0.8rem;
 }
 
 .text-toggle::after {
@@ -164,6 +166,7 @@ button {
   transform: translateX(calc(-100% - 0.5em));
   opacity: 1;
   transition: opacity 300ms ease-in-out;
+  font-size: 0.8rem;
 }
 
 .background-toggle:checked ~ .text-toggle::before {
@@ -200,4 +203,9 @@ button {
 
 #moon {
   background-image: url(https://img.icons8.com/fluent/40/000000/full-moon.png);
+}
+
+.attribution {
+  font-size: 0.75rem;
+  color: #208ed0;
 }
