@@ -11,20 +11,34 @@
 <body>
 
   <p class="instructions">Press spacebar or tap on the background to make the dinosaur jump</p>
+  
   <h2 class="alert"></h2>
-  <h2 class="score">Score: <span class="score-number">0</span></h2>
-  <h2 class="high-score">High score: <span class="high-score-number"></span></h2>
-  <button class="play-button play" title="Play">Play</button>
-  <button class="play-button play-again" title="Play again">Play again</button>
-  Background: 
-  <label for="background-toggle" class="switch" title="Toggle background">
-    <input type="checkbox" class="background-toggle" id="background-toggle" name="background-toggle" checked />
-    <span class="switch-toggle"></span>
-    <span class="text-toggle"></span>
-  </label>
-  Play on:
-  <button class="planet" id="earth" title="Earth"></button>
-  <button class="planet" id="moon" title="Moon"></button>
+  
+  <div class="scoring">
+    <h3 class="score">Score: <span class="score-number">0</span></h2>
+    <h3 class="high-score">High score: <span class="high-score-number"></span></h2>
+  </div>
+  
+  <div class="playing">
+    <button class="play-button play" title="Play">Play</button>
+    <button class="play-button play-again" title="Play again">Play again</button>
+  </div>
+  
+  <div class="background">
+    Background: 
+    <label for="background-toggle" class="switch" title="Toggle background">
+      <input type="checkbox" class="background-toggle" id="background-toggle" name="background-toggle" checked />
+      <span class="switch-toggle"></span>
+      <span class="text-toggle"></span>
+    </label>
+  </div>
+
+  <div class="location">
+    Play on:
+    <button class="planet" id="earth" title="Earth"></button>
+    <button class="planet" id="moon" title="Moon"></button>
+  </div>
+  
   <div class="game">
     <div class="background-border">
       <div class="background"></div>
