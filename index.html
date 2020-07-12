@@ -10,44 +10,44 @@
 </head>
 <body>
 
-  <p class="instructions">Press spacebar or tap on the background to make the dinosaur jump</p>
-  
-  <h2 class="alert"></h2>
-  
-  <div class="scoring">
-    <h3 class="score">Score: <span class="score-number">0</span></h2>
-    <h3 class="high-score">High score: <span class="high-score-number"></span></h2>
-  </div>
-  
-  <div class="playing">
-    <button class="play-button play" title="Play">Play</button>
-    <button class="play-button play-again" title="Play again">Play again</button>
-  </div>
-  
-  <div class="background">
-    Background: 
-    <label for="background-toggle" class="switch" title="Toggle background">
-      <input type="checkbox" class="background-toggle" id="background-toggle" name="background-toggle" checked />
-      <span class="switch-toggle"></span>
-      <span class="text-toggle"></span>
-    </label>
+  <div class="controls">  
+    <div class="playing">
+      <button class="play-button play" title="Play">Play</button>
+      <button class="play-button play-again" title="Play again">Play again</button>
+    </div>
+
+    <div class="backgrounding">
+      Background:<br>
+      <label for="background-toggle" class="switch" title="Toggle background">
+        <input type="checkbox" class="background-toggle" id="background-toggle" name="background-toggle" checked />
+        <span class="switch-toggle"></span>
+        <span class="text-toggle"></span>
+      </label>
+    </div>
+
+    <div class="location">
+      Play on:<br>
+      <button class="planet" id="earth" title="Earth"></button>
+      <button class="planet" id="moon" title="Moon"></button>
+      <br><a class="attribution" href="https://icons8.com/">Icons by Icons8</a>
+    </div>
+
+    <div class="scoring">
+      <h3 class="score">Score: <span class="score-number">0</span></h2>
+      <h3 class="high-score">High score: <span class="high-score-number"></span></h2>
+    </div>    
   </div>
 
-  <div class="location">
-    Play on:
-    <button class="planet" id="earth" title="Earth"></button>
-    <button class="planet" id="moon" title="Moon"></button>
-  </div>
-  
+
   <div class="game">
     <div class="background-border">
+      <p class="instructions">Press spacebar or tap on the background to make the dinosaur jump</p>
+      <h2 class="alert"></h2>
       <div class="background"></div>
     </div>
     <div class="dino"></div>
     <div class="obstacles"></div>
   </div>
-
-  <a class="attribution" href="https://icons8.com/icon/fQuyemmRjj1r/earth-planet">Earth Planet and Moon icons by Icons8</a>
 
 </body>
 </html>

@@ -3,6 +3,26 @@ body {
   font-family: 'Nunito', sans-serif;
 }
 
+h2, h3 {
+  margin: 0;
+  margin-bottom: 0.3em;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.instructions,
+.alert {
+  position: relative; /* To make z-index work */
+  display: grid;
+  place-content: center;
+  height: 100%;
+  z-index: 1;
+}
+
 .dino {
   position: absolute;
   bottom: 0;
@@ -33,10 +53,19 @@ body {
   transition: opacity 500ms linear;
 }
 
+.game {
+  position: absolute;
+  bottom: 0;
+  bottom: 0;
+  height: 280px;
+  width: 100%;
+  z-index: -1;
+}
+
 .background {
   position: absolute;
   bottom: 0;
-  height: 280px;
+  height: 100%;
   width: 100%;
   background-image: url(t-rex-background-tall.png);
   background-repeat: repeat-x;
