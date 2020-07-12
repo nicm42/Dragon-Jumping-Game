@@ -107,20 +107,20 @@ button {
   border: none;
 }
 
-.play-button {
+.play {
   background-color: #c2e8ff;
-  padding: 0.5em 0.8em;
   border-radius: 5px;
+  padding: 0.5em 2.25em;
   font-size: 1rem;
 }
 
-.play-button:hover,
-.play-button:focus {
+.play:hover,
+.play:focus {
   background-color: #9ad9ff;
 }
 
 .play-again {
-  display: none;
+  padding: 0.5em 0.8em;
 }
 
 .background-toggle {

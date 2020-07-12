@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const background = document.querySelector('.background');
   const alert = document.querySelector('.alert');
   const play = document.querySelector('.play');
-  const playAgain = document.querySelector('.play-again');
   const backgroundToggle = document.querySelector('.background-toggle');
   const planet = Array.from(document.getElementsByClassName('planet'));
   const earth = document.getElementById('earth');
@@ -86,7 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function gameOver() {
     alert.innerHTML = 'Game Over';
-    playAgain.style.display = 'block';
+    play.style.visibility = 'visible';
+    play.classList.add('play-again');
+    play.innerHTML = 'Play Again';
     isGameOver = true;
     //Check the score and update the high score, if necessary
     calculateScore();
@@ -103,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     background.classList.remove('animate');
     document.removeEventListener('keyup', control);
     background.removeEventListener('click', control);
-    playAgain.addEventListener('click', playGameAgain);
+    play.addEventListener('click', playGameAgain);
     dino.classList.add('dead');
   }
 
@@ -167,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function playGame() {
-    play.style.display = 'none';
+    play.style.visibility = 'hidden';
     document.querySelector('.instructions').style.display = 'none';
     isGameOver = false;
     alert.innerHTML = '';
