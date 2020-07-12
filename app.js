@@ -168,6 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function playGame() {
     play.style.display = 'none';
+    document.querySelector('.instructions').style.display = 'none';
     isGameOver = false;
     alert.innerHTML = '';
     background.classList.add('animate');
