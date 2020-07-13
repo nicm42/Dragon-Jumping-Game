@@ -129,7 +129,7 @@ button {
   padding: 0.5em 0.8em;
 }
 
-.background-toggle {
+.sound-toggle {
   position: absolute;
   opacity: 0;
   pointer-events: none;
@@ -167,16 +167,16 @@ button {
   background-color: white;
 }
 
-.background-toggle:checked + .switch-toggle::before {
+.sound-toggle:checked + .switch-toggle::before {
   background-color: #bae0bd;
 }
 
-.background-toggle:checked + .switch-toggle::after {
+.sound-toggle:checked + .switch-toggle::after {
   transform: translate(calc(4em - 110%), -50%);
 }
 
-.background-toggle:hover+.switch-toggle, 
-.background-toggle:focus + .switch-toggle {
+.sound-toggle:hover+.switch-toggle, 
+.sound-toggle:focus + .switch-toggle {
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
 }
 
@@ -204,11 +204,11 @@ button {
   font-size: 0.8rem;
 }
 
-.background-toggle:checked ~ .text-toggle::before {
+.sound-toggle:checked ~ .text-toggle::before {
   opacity: 1;  
 }
 
-.background-toggle:checked ~ .text-toggle::after {
+.sound-toggle:checked ~ .text-toggle::after {
   opacity: 0;
 }
 
@@ -243,4 +243,8 @@ button {
 .attribution {
   font-size: 0.75rem;
   color: #208ed0;
+}
+
+.scoring {
+  text-align: right;
 }
