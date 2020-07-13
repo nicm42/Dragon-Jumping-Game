@@ -29,7 +29,6 @@ h2, h3 {
   bottom: 0;
   width: 60px;
   height: 60px;
-  /* background-image: url(t-rex.png); */
   background-image: url(dragon.svg);
   background-repeat: no-repeat;
 }
@@ -46,7 +45,6 @@ h2, h3 {
   bottom: 0;
   width: 60px;
   height: 60px;
-  /* background-image: url(cacti.png); */
   background-image: url(rock.svg);
   background-repeat: no-repeat;
 }
