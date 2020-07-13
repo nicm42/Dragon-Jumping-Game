@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     let timerId = setInterval(function () {
-      if (obstaclePosition > 0 && obstaclePosition < 60 && position < 60) {
+      if (obstaclePosition > 0 && obstaclePosition < 50 && position < 40) {
         clearInterval(timerId);
         gameOver();
       }
@@ -251,6 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
     positionUp = 5;
     earth.disabled = true;
     moon.disabled = false;
+    background.style.backgroundColor = '#e7f6ff';
     sessionStorage.setItem('planet', 'earth');
   }
 
@@ -262,6 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
     positionUp = 1;
     moon.disabled = true;
     earth.disabled = false;
+    background.style.backgroundColor = '#f2f3f4';
     sessionStorage.setItem('planet', 'moon');
   }
 
