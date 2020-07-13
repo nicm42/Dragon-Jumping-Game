@@ -17,6 +17,12 @@ h2, h3 {
   padding: 1em;
 }
 
+@media (max-height: 400px) {
+  .controls {
+    padding-top: 0;
+  }
+}
+
 .dino {
   position: absolute;
   bottom: 0;
@@ -62,7 +68,6 @@ h2, h3 {
   height: 280px;
   width: 100%;
   background-color: #e7f6ff;
-  border-top: 1px solid grey;
 }
 
 .instructions,
@@ -95,6 +100,10 @@ button {
 
 .play-again {
   padding: 0.5em 0.8em;
+}
+
+.sounds {
+  text-align: center;
 }
 
 .sound-toggle {
@@ -180,6 +189,15 @@ button {
   opacity: 0;
 }
 
+.location {
+  text-align: center;
+  line-height: 1 /* Make the attribution closer to the planet buttons */
+}
+
+.location-text {
+  line-height: 1.3; /* Move the text away from the planet buttons */
+}
+
 .planet {
   width: 40px;
   height: 40px;
@@ -209,8 +227,9 @@ button {
 }
 
 .attribution {
-  font-size: 0.75rem;
+  font-size: 0.66rem;
   color: #208ed0;
+  line-height: 1;
 }
 
 .scoring {

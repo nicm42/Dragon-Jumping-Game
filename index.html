@@ -14,19 +14,23 @@
     <button class="play" title="Play">Play</button>
 
     <div class="sounds">
-      Sound:<br>
-      <label for="sound-toggle" class="switch" title="Toggle sounds">
-        <input type="checkbox" class="sound-toggle" id="sound-toggle" name="sound-toggle" checked />
-        <span class="switch-toggle"></span>
-        <span class="text-toggle"></span>
-      </label>
+      Sound:
+      <div class="soundtoggling">
+        <label for="sound-toggle" class="switch" title="Toggle sounds">
+          <input type="checkbox" class="sound-toggle" id="sound-toggle" name="sound-toggle" checked />
+          <span class="switch-toggle"></span>
+          <span class="text-toggle"></span>
+        </label>
+      </div>
     </div>
 
     <div class="location">
-      Play on:<br>
-      <button class="planet" id="earth" title="Earth"></button>
-      <button class="planet" id="moon" title="Moon"></button>
-      <br><a class="attribution" href="https://icons8.com/">Icons by Icons8</a>
+      <span class="location-text">Play on:</span>
+      <div class="planets">
+        <button class="planet" id="earth" title="Earth"></button>
+        <button class="planet" id="moon" title="Moon"></button>
+      </div>
+      <a class="attribution" href="https://icons8.com/">Icons by Icons8</a>
     </div>
 
     <div class="scoring">
