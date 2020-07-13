@@ -46,7 +46,8 @@ h2, h3 {
   bottom: 0;
   width: 60px;
   height: 60px;
-  background-image: url(cacti.png);
+  /* background-image: url(cacti.png); */
+  background-image: url(rock.svg);
   background-repeat: no-repeat;
 }
 
