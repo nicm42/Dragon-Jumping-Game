@@ -61,41 +61,9 @@ h2, h3 {
   bottom: 0;
   height: 280px;
   width: 100%;
-  /* background-image: url(t-rex-background-tall.png);
-  background-repeat: repeat-x; */
   background-color: #e7f6ff;
   border-top: 1px solid grey;
 }
-
-/* .background-border {
-  position: absolute;
-  bottom: 0;
-  left: -10px;
-  height: 280px;
-  width: 110%;
-  border-top: 1px solid grey;
-} */
-
-/* @media (max-width: 550px) {
-  .background {
-    background-image: url(t-rex-background-small.png);
-  }
-}
-
-.background.animate {
-  animation-name: scrollBackground;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-
-@keyframes scrollBackground {
-  from {
-    background-position: 1000%;
-  }
-  to {
-    background-position: 0;
-  }
-} */
 
 .instructions,
 .alert {

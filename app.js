@@ -4,14 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const background = document.querySelector('.background');
   const alert = document.querySelector('.alert');
   const play = document.querySelector('.play');
-  //const backgroundToggle = document.querySelector('.background-toggle');
+  const soundToggle = document.querySelector('.sound-toggle');
   const planet = Array.from(document.getElementsByClassName('planet'));
   const earth = document.getElementById('earth');
   const moon = document.getElementById('moon');
 
   let isJumping = false;
   let isGameOver = false;
-  //let isBackgroundOn = true;
+  let isSoundOn = true;
   let position = 0;
 
   //Planet-based variables - set to earth to start with
@@ -101,7 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
         obstacles.removeChild(obstacles.lastChild);
       }      
     }, 500);
-    //background.classList.remove('animate');
     document.removeEventListener('keyup', control);
     background.removeEventListener('click', control);
     play.addEventListener('click', playGameAgain);
@@ -136,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function getHighScore() {
-    //let highScore;
     let currentPlanet = sessionStorage.getItem('planet');
     if (!currentPlanet) {
       currentPlanet = 'earth';
@@ -158,23 +156,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const highScore = getHighScore();
   writeHighScore(highScore);
 
-  /* function setBackgroundSpeed() {
-    let constant = 15;
-    if (window.innerWidth <= 550) {
-      constant = 7;
-    }
-    const animationTime = window.innerWidth * 0.03 - constant;
-    background.style.animationDuration = animationTime + 's';
-  } */
-
   function playGame() {
     play.style.visibility = 'hidden';
     document.querySelector('.instructions').style.display = 'none';
     isGameOver = false;
     alert.innerHTML = '';
-    //background.classList.add('animate');
-    //setBackgroundSpeed();
-    //window.addEventListener('resize', setBackgroundSpeed);
     window.focus();
     document.addEventListener('keyup', control);
     background.addEventListener('click', control);
@@ -194,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function playGameAgain() {
     sessionStorage.setItem('reloading', 'true');
     //using JSON.stringify here because sessionStorage only stores strings, not booleans
-    //sessionStorage.setItem('background', JSON.stringify(isBackgroundOn));
+    sessionStorage.setItem('background', JSON.stringify(isSoundOn));
     location.reload();
   }
 
@@ -203,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (reloading) {
     sessionStorage.removeItem('reloading');
     //using JSON.stringify here because sessionStorage only stores strings and we need this is a boolean
-    //isBackgroundOn = JSON.parse(sessionStorage.getItem('background'));
+    isSoundOn = JSON.parse(sessionStorage.getItem('background'));
 
     if (sessionStorage.getItem('planet') === 'earth') {
       setUpEarth();
@@ -211,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (sessionStorage.getItem('planet') === 'moon') {
       setUpMoon();
     };
-    //setBackground();
+    setSound();
     const highScore = getHighScore();
     writeHighScore(highScore);
     playGame();
@@ -220,28 +206,26 @@ document.addEventListener('DOMContentLoaded', () => {
     setUpEarth();
   }
 
-  /* function toggleBackground() {
+  function toggleSound() {
     window.focus(); //in case it's pressed while playing
-    if (isBackgroundOn) {
-      isBackgroundOn = false;
-      setBackground();
+    if (isSoundOn) {
+      isSoundOn = false;
+      setSound();
     } else {
-      isBackgroundOn = true;
-      setBackground();
+      isSoundOn = true;
+      setSound();
     }
-  } */
+  }
 
-  /* function setBackground() {
-    if (isBackgroundOn) {
-      backgroundToggle.innerHTML = "Turn off background";
-      background.style.opacity = 1;
+  function setSound() {
+    if (isSoundOn) {
+      //do sound on stuff
     } else {
-      backgroundToggle.innerHTML = "Turn on background";
-      background.style.opacity = 0;
+      //do sound off stuff
     }
-  } */
+  }
 
-  //backgroundToggle.addEventListener('change', toggleBackground);
+  soundToggle.addEventListener('change', toggleSound);
 
   function setUpEarth() {
     gravityUp = 0.9;
