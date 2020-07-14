@@ -1,0 +1,237 @@
+body {
+  overflow: hidden;
+  font-family: 'Nunito', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+h2, h3 {
+  margin: 0;
+  margin-bottom: 0.3em;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+}
+
+@media (max-height: 400px) {
+  .controls {
+    padding-top: 0;
+  }
+}
+
+.dino {
+  position: absolute;
+  bottom: 0;
+  width: 60px;
+  height: 60px;
+  background-image: url(dragon.svg);
+  background-repeat: no-repeat;
+}
+
+.dead {
+  /* Need the translateX here to move the dragon down to the bottom
+   - X rather than Y because we've rotated the image */
+  transform: rotate(-115deg) translateX(-15px);
+  transition: transform 500ms linear;
+}
+
+.obstacle {
+  position: absolute;
+  bottom: 0;
+  width: 60px;
+  height: 60px;
+  background-image: url(rock.svg);
+  background-repeat: no-repeat;
+}
+
+.fadeOut {
+  opacity: 0;
+  transition: opacity 500ms linear;
+}
+
+.game {
+  position: absolute;
+  bottom: 0;
+  bottom: 0;
+  height: 280px;
+  width: 100%;
+  z-index: -1;
+}
+
+.background {
+  position: absolute;
+  bottom: 0;
+  height: 280px;
+  width: 100%;
+  background-color: #e7f6ff;
+}
+
+.instructions,
+.alert {
+  position: relative; /* To make z-index work */
+  display: grid;
+  place-content: center;
+  height: 100%;
+  width: 100vw; /* otherwise it will be wider than the screen */
+  z-index: 1;
+}
+
+button {
+  cursor: pointer;
+  padding: 0;
+  border: none;
+}
+
+.play {
+  background-color: #c2e8ff;
+  border-radius: 5px;
+  padding: 0.5em 2.25em;
+  font-size: 1rem;
+}
+
+.play:hover,
+.play:focus {
+  background-color: #9ad9ff;
+}
+
+.play-again {
+  padding: 0.5em 0.8em;
+}
+
+.sounds {
+  text-align: center;
+}
+
+.sound-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.switch-toggle::before,
+.switch-toggle::after {
+  content: '';
+  display: block;
+  background: #eee;
+  transition: transform 300ms ease-in-out;
+}
+
+.switch-toggle::before {
+  height: 2em;
+  width: 4em;
+  border-radius: 1em;
+  opacity: 0.6;
+}
+
+.switch-toggle::after {
+  position: absolute;
+  top: 50%;
+  transform: translate(10%, -50%);
+  height: 1.7em;
+  width: 1.7em;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.sound-toggle:checked + .switch-toggle::before {
+  background-color: #bae0bd;
+}
+
+.sound-toggle:checked + .switch-toggle::after {
+  transform: translate(calc(4em - 110%), -50%);
+}
+
+.sound-toggle:hover+.switch-toggle, 
+.sound-toggle:focus + .switch-toggle {
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+.text-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.text-toggle::before {
+  content: 'ON';
+  position: absolute;
+  transform: translateX(-4.25em);
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+  font-size: 0.8rem;
+}
+
+.text-toggle::after {
+  content: 'OFF';
+  position: absolute;
+  transform: translateX(calc(-100% - 0.5em));
+  opacity: 1;
+  transition: opacity 300ms ease-in-out;
+  font-size: 0.8rem;
+}
+
+.sound-toggle:checked ~ .text-toggle::before {
+  opacity: 1;  
+}
+
+.sound-toggle:checked ~ .text-toggle::after {
+  opacity: 0;
+}
+
+.location {
+  text-align: center;
+  line-height: 1 /* Make the attribution closer to the planet buttons */
+}
+
+.location-text {
+  line-height: 1.3; /* Move the text away from the planet buttons */
+}
+
+.planet {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+/* Fade out the button that isn't disabled because the disabled one is the current setup */
+.planet:not(:disabled) {
+  opacity: 0.33;
+}
+
+.planet:disabled {
+  cursor: auto;
+}
+.planet:not(:disabled):hover,
+.planet:not(:disabled):focus {
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+#earth {
+    background-image: url(https://img.icons8.com/office/40/000000/earth-planet.png);
+}
+
+#moon {
+  background-image: url(https://img.icons8.com/fluent/40/000000/full-moon.png);
+}
+
+.attribution {
+  font-size: 0.66rem;
+  color: #208ed0;
+  line-height: 1;
+}
+
+.scoring {
+  text-align: right;
+}
