@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const planet = Array.from(document.getElementsByClassName('planet'));
   const earth = document.getElementById('earth');
   const moon = document.getElementById('moon');
+  const jumpSound = document.querySelector('.jump-sound');
+  const gameOverSound = document.querySelector('.game-over-sound');
 
   let isJumping = false;
   let isGameOver = false;
@@ -26,6 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.keyCode === 32 || e.type === 'click') {
       if (!isJumping) {
         isJumping = true;
+        if (isSoundOn) {
+          jumpSound.play();
+        }
         jump();
       }
     }
@@ -84,6 +89,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function gameOver() {
+    if (isSoundOn) {
+      gameOverSound.play();
+    }
     alert.innerHTML = 'Game Over';
     play.style.visibility = 'visible';
     play.classList.add('play-again');
