@@ -235,3 +235,9 @@ button {
 .scoring {
   text-align: right;
 }
+
+@media (not(hover)) {
+  .sounds {
+    display: none;
+  }
+}
