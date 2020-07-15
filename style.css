@@ -237,9 +237,10 @@ button {
 }
 
 /* Hide the sound toggle on mobile and tablets so it can never be turned on 
-  because it's likely to interfere with podcasts, and I hate it when that happens */
+  because it's likely to interfere with podcasts, and I hate it when that happens
+  Using  visibility hidden rather display none so the dragon doesn't go over the earth and moon icons when he jumps on mobile */
 @media (pointer:coarse) {
   .sounds {
-    display: none;
+    visibility: hidden;
   }
 }
