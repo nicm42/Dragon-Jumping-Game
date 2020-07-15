@@ -172,7 +172,14 @@ document.addEventListener('DOMContentLoaded', () => {
     window.focus();
     document.addEventListener('keyup', control);
     background.addEventListener('click', control);
-    generateObstacles();
+    if (reloading) {
+      //Wait a bit before generating obstacles because over the internet it could take a little while for everything to reload
+      setTimeout(() => {
+        generateObstacles();
+      }, 1000);
+    } else {
+      generateObstacles();
+    }
     play.removeEventListener('click', playGame);
   }
 
@@ -188,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function playGameAgain() {
     sessionStorage.setItem('reloading', 'true');
     //using JSON.stringify here because sessionStorage only stores strings, not booleans
-    sessionStorage.setItem('background', JSON.stringify(isSoundOn));
+    sessionStorage.setItem('sound', JSON.stringify(isSoundOn));
     location.reload();
   }
 
@@ -197,15 +204,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (reloading) {
     sessionStorage.removeItem('reloading');
     //using JSON.stringify here because sessionStorage only stores strings and we need this is a boolean
-    isSoundOn = JSON.parse(sessionStorage.getItem('background'));
-
+    isSoundOn = JSON.parse(sessionStorage.getItem('sound'));
+    console.log(isSoundOn);
     if (sessionStorage.getItem('planet') === 'earth') {
       setUpEarth();
     };
     if (sessionStorage.getItem('planet') === 'moon') {
       setUpMoon();
     };
-    setSound();
     const highScore = getHighScore();
     writeHighScore(highScore);
     playGame();
@@ -218,19 +224,10 @@ document.addEventListener('DOMContentLoaded', () => {
     window.focus(); //in case it's pressed while playing
     if (isSoundOn) {
       isSoundOn = false;
-      setSound();
     } else {
       isSoundOn = true;
-      setSound();
     }
-  }
-
-  function setSound() {
-    if (isSoundOn) {
-      //do sound on stuff
-    } else {
-      //do sound off stuff
-    }
+    console.log(isSoundOn);
   }
 
   soundToggle.addEventListener('change', toggleSound);

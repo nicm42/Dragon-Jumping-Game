@@ -219,11 +219,11 @@ button {
 }
 
 #earth {
-    background-image: url(https://img.icons8.com/office/40/000000/earth-planet.png);
+    background-image: url(earth.png);
 }
 
 #moon {
-  background-image: url(https://img.icons8.com/fluent/40/000000/full-moon.png);
+  background-image: url(moon.png);
 }
 
 .attribution {
