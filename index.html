@@ -11,13 +11,11 @@
 <body>
 
   <div class="controls">  
-    <button class="play" title="Play">Play</button>
-
     <div class="sounds">
       Sound:
       <div class="soundtoggling">
         <label for="sound-toggle" class="switch" title="Toggle sounds">
-          <input type="checkbox" class="sound-toggle" id="sound-toggle" name="sound-toggle" checked />
+          <input type="checkbox" class="sound-toggle" id="sound-toggle" name="sound-toggle"/>
           <span class="switch-toggle"></span>
           <span class="text-toggle"></span>
         </label>
@@ -42,12 +40,15 @@
 
   <div class="game">
     <div class="background">
-      <p class="instructions">Press spacebar or tap on the background to make the dinosaur jump</p>
-      <h2 class="alert"></h2>
+      <div class="playing">
+        <p class="instructions">Press spacebar or tap on the background to make the dinosaur jump</p>
+        <h2 class="alert"></h2>
+        <button class="play" title="Play">Play</button>
+      </div>
     </div>
-    </div>
-    <div class="dino"></div>
-    <div class="obstacles"></div>
+  </div>
+  <div class="dino"></div>
+  <div class="obstacles"></div>
   </div>
 
   <audio class="jump-sound">

@@ -70,11 +70,11 @@ h2, h3 {
   background-color: #e7f6ff;
 }
 
-.instructions,
-.alert {
+.playing {
   position: relative; /* To make z-index work */
   display: grid;
   place-content: center;
+  justify-items: center;
   height: 100%;
   width: 100vw; /* otherwise it will be wider than the screen */
   z-index: 1;
@@ -87,7 +87,7 @@ button {
 }
 
 .play {
-  background-color: #c2e8ff;
+  background-color: #afe9af;
   border-radius: 5px;
   padding: 0.5em 2.25em;
   font-size: 1rem;
@@ -95,7 +95,7 @@ button {
 
 .play:hover,
 .play:focus {
-  background-color: #9ad9ff;
+  background-color: #2ca05a;
 }
 
 .play-again {
@@ -145,7 +145,7 @@ button {
 }
 
 .sound-toggle:checked + .switch-toggle::before {
-  background-color: #bae0bd;
+  background-color: #afe9af;
 }
 
 .sound-toggle:checked + .switch-toggle::after {

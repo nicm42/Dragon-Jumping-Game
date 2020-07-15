@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let isJumping = false;
   let isGameOver = false;
-  let isSoundOn = true;
+  let isSoundOn = false;
   let position = 0;
 
   //Planet-based variables - set to earth to start with
@@ -164,7 +164,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const highScore = getHighScore();
   writeHighScore(highScore);
 
-  function playGame() {
+  function playGame(e) {
+    //Check e is defined - if it's not then we're coming from a reload rather than a button click
+    //in which case we don't need to worry about the event propagating
+    if(e) {
+      e.stopPropagation(); //stops the click on the play button from running the background click event
+    }
     play.style.visibility = 'hidden';
     document.querySelector('.instructions').style.display = 'none';
     isGameOver = false;
@@ -203,9 +208,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (reloading) {
     sessionStorage.removeItem('reloading');
-    //using JSON.stringify here because sessionStorage only stores strings and we need this is a boolean
+    //using JSON.stringify here because sessionStorage only stores strings and we need this as a boolean
     isSoundOn = JSON.parse(sessionStorage.getItem('sound'));
-    console.log(isSoundOn);
     if (sessionStorage.getItem('planet') === 'earth') {
       setUpEarth();
     };
