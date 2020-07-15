@@ -236,7 +236,9 @@ button {
   text-align: right;
 }
 
-@media (not(hover)) {
+/* Hide the sound toggle on mobile and tablets so it can never be turned on 
+  because it's likely to interfere with podcasts, and I hate it when that happens */
+@media (pointer:coarse) {
   .sounds {
     display: none;
   }
