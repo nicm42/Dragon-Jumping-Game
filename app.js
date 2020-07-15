@@ -172,7 +172,14 @@ document.addEventListener('DOMContentLoaded', () => {
     window.focus();
     document.addEventListener('keyup', control);
     background.addEventListener('click', control);
-    generateObstacles();
+    if (reloading) {
+      //Wait a bit before generating obstacles because over the internet it could take a little while for everything to reload
+      setTimeout(() => {
+        generateObstacles();
+      }, 500);
+    } else {
+      generateObstacles();
+    }
     play.removeEventListener('click', playGame);
   }
 
