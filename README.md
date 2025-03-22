@@ -32,7 +32,7 @@ The original game was based on Chrome's dinosaur game that pops up when you're o
 * Reloding the page from JavaScript
 
 ## Setup
-To view this project visit the [demo](https://dragon-jump.nicm42.co.uk/) or download the files and open index.html
+To view this project visit the [demo](https://dragon-jump.netlify.app/) or download the files and open index.html
 
 ## Features
 * Scoring
